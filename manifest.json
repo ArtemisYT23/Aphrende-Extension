@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Aprhende",
+    "version": "1.0.1",
+    "description": "Aplication blog note the Aphrende",
+    "icons": {
+        "128": "src/assets/Aphrende.png"
+    },
+    "action": {
+        "default_popup": "index.html"
+    }
+}
