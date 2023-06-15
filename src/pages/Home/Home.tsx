@@ -1,27 +1,35 @@
-import { logout } from "@/store/reducers/authReducers";
-import { useAppDispatch, useAppSelector } from "@/store/store";
+import { Task } from "@/components";
+import {
+  TaskDetail,
+  TitleNote,
+  ContenteTitle,
+  AppContent,
+} from "./Home.styles";
+import { useState, useEffect } from "react";
+import { Item } from "@/types";
 
 const Home: React.FC = () => {
-  const dispatch = useAppDispatch();
- const user = useAppSelector((state) => state.auth.user);
+  const [TaskList, setTaskList] = useState<Item[]>([]);
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
+  useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+      setTaskList(JSON.parse(storedTodos));
+    }
+  }, []);
 
   return (
-    <div>
-      {user ? (
-        <div>
-          <p>Usuario autenticado: {user?.displayName}</p>
-          <p>Usuario autenticado: {user?.email}</p>
-          <button onClick={handleLogout}>Cerrar sesión</button>
-        </div>
-      ) : (
-        <></>
-      )}
-      <span>HOME</span>
-    </div>
+    <AppContent>
+      <ContenteTitle>
+        <TitleNote>NOTAS</TitleNote>
+      </ContenteTitle>
+
+      <TaskDetail>
+        {TaskList.map((taskItem, i) => (
+          <Task key={i} item={taskItem} />
+        ))}
+      </TaskDetail>
+    </AppContent>
   );
 };
 

@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { auth } from "@/config/firebase";
-import { useAppDispatch, useAppSelector } from "@/store/store";
-import { onAuthStateChanged } from "firebase/auth";
 import { login, logout, setUser } from "@/store/reducers/authReducers";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { onAuthStateChanged } from "firebase/auth";
+import { ContentLogin, ButtonLogin } from "./Login.styles";
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -33,11 +34,9 @@ const Login: React.FC = () => {
   }, [user]);
 
   return (
-    <div>
-      <div>
-        <button onClick={handleLogin}>Iniciar sesión con Google</button>
-      </div>
-    </div>
+    <ContentLogin>
+        <ButtonLogin onClick={handleLogin}>Iniciar sesión con Google</ButtonLogin>
+    </ContentLogin>
   );
 };
 

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 :root {
 }
 
@@ -6,3 +8,8 @@
     padding: 0;
     margin: 0;
 }
+
+/* html, body {
+    width: 400px;
+    height: 200px;
+} */
